@@ -1,3 +1,5 @@
 .idea
 *.pyc
 cye_pass
+db.sqlite3
+app/media/*

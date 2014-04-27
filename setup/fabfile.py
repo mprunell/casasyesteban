@@ -3,7 +3,8 @@ from fabric.contrib.files import exists
 
 env.user = 'root'
 
-def new_user(username, password):   
+
+def new_user(username, password):
     group = 'cye'
     put('cye_pass', '/tmp')
     with settings(warn_only=True):
@@ -14,11 +15,25 @@ def new_user(username, password):
         sudo('chpasswd < /tmp/cye_pass')
         sudo('rm /tmp/cye_pass')        
 
+
 def configure_supervisor():
     sudo('apt-get install supervisor')
-    put('casasyesteban_site.conf', '/etc/supervisor/conf.d/')
+    put('casasyesteban_site.conf', '/etc/supervisor/conf.d')
     sudo('supervisorctl reread')
     sudo('supervisorctl update')
+    
+
+def configure_nginx():
+    sudo('apt-get install nginx')
+    put('casasyesteban_site_nginx.conf', '/etc/nginx/conf.d/casasyesteban_site.conf')
+    sudo('service nginx start')
+
+
+def configure_uwsgi():
+    sudo('apt-get install build-essential python')
+    sudo('apt-get install python-dev')
+    sudo('pip install uwsgi')
+
 
 def provision():
     sudo('apt-get update && apt-get upgrade')
@@ -44,17 +59,24 @@ def provision():
         with cd('/home/cye/webapp'):
             if not exists('casasyesteban'):
                 run('git clone https://github.com/mprunell/casasyesteban.git')
-        deploy()
-        configure_supervisor()
-        sudo('supervisorctl restart cye')
+    path = '/home/cye/webapp/log'
+    if not exists(path):
+        with settings(user='cye'):
+            run('mkdir ' + path)
+    configure_uwsgi()
+    configure_supervisor()
+    configure_nginx()
+    deploy()
+
 
 def deploy():
         with cd('/home/cye/webapp/casasyesteban/app'):
-            run('git pull origin master') 
-            run('/home/cye/venv/bin/python manage.py collectstatic --noinput')
-            run('/home/cye/venv/bin/python manage.py syncdb')
-            run('/home/cye/venv/bin/python manage.py migrate')
+            with settings(user='cye'):
+                run('git pull origin master') 
+                run('/home/cye/venv/bin/python manage.py collectstatic --noinput')
+                run('/home/cye/venv/bin/python manage.py syncdb')
+                run('/home/cye/venv/bin/python manage.py migrate')
             
-        sudo('supervisorctl restart cye')
+        sudo('supervisorctl restart casasyesteban_site')
             
             

@@ -1,3 +1,8 @@
 from django.contrib import admin
+from pages.models import Image, Carousel, Page, Home
 
-# Register your models here.
+
+admin.site.register(Image)
+admin.site.register(Carousel)
+admin.site.register(Page)
+admin.site.register(Home)
