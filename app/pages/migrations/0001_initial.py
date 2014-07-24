@@ -15,6 +15,15 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'pages', ['Carousel'])
 
+        # Adding model 'Home'
+        db.create_table(u'pages_home', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('headline', self.gf('django.db.models.fields.CharField')(max_length=512)),
+            ('sub_headline', self.gf('django.db.models.fields.CharField')(max_length=1024)),
+            ('carousel', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['pages.Carousel'], null=True, blank=True)),
+        ))
+        db.send_create_signal(u'pages', ['Home'])
+
         # Adding model 'Image'
         db.create_table(u'pages_image', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -40,18 +49,13 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'pages', ['Page'])
 
-        # Adding model 'Home'
-        db.create_table(u'pages_home', (
-            (u'page_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['pages.Page'], unique=True, primary_key=True)),
-            ('headline', self.gf('django.db.models.fields.CharField')(max_length=512)),
-            ('sub_headline', self.gf('django.db.models.fields.CharField')(max_length=1024)),
-        ))
-        db.send_create_signal(u'pages', ['Home'])
-
 
     def backwards(self, orm):
         # Deleting model 'Carousel'
         db.delete_table(u'pages_carousel')
+
+        # Deleting model 'Home'
+        db.delete_table(u'pages_home')
 
         # Deleting model 'Image'
         db.delete_table(u'pages_image')
@@ -62,9 +66,6 @@ class Migration(SchemaMigration):
         # Deleting model 'Page'
         db.delete_table(u'pages_page')
 
-        # Deleting model 'Home'
-        db.delete_table(u'pages_home')
-
 
     models = {
         u'pages.carousel': {
@@ -73,9 +74,10 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '128'})
         },
         u'pages.home': {
-            'Meta': {'object_name': 'Home', '_ormbases': [u'pages.Page']},
+            'Meta': {'object_name': 'Home'},
+            'carousel': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['pages.Carousel']", 'null': 'True', 'blank': 'True'}),
             'headline': ('django.db.models.fields.CharField', [], {'max_length': '512'}),
-            u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['pages.Page']", 'unique': 'True', 'primary_key': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'sub_headline': ('django.db.models.fields.CharField', [], {'max_length': '1024'})
         },
         u'pages.image': {

@@ -1,4 +1,5 @@
 from django.db import models
+from solo.models import SingletonModel
 
 
 class Carousel(models.Model):
@@ -7,6 +8,23 @@ class Carousel(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class Home(SingletonModel):
+
+    headline = models.CharField(max_length=512)
+    sub_headline = models.CharField(max_length=1024)
+    carousel = models.ForeignKey(Carousel, blank=True, null=True)
+    about = models.TextField(blank=True, null=True)
+    work = models.TextField(blank=True, null=True)
+    footer = models.TextField(blank=True, null=True)
+
+    def __unicode__(self):
+        return u'Home'
+
+    class Meta:
+        verbose_name = 'Home'
+        verbose_name_plural = 'Home'
 
 
 class Image(models.Model):
@@ -28,8 +46,3 @@ class Page(models.Model):
         return self.slug
 
 
-class Home(Page):
-
-    headline = models.CharField(max_length=512)
-    sub_headline = models.CharField(max_length=1024)
-    carousel = models.ForeignKey(Carousel, blank=True, null=True)

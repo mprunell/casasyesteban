@@ -8,15 +8,15 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding field 'Home.carousel'
-        db.add_column(u'pages_home', 'carousel',
-                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['pages.Carousel'], null=True, blank=True),
+        # Adding field 'Home.footer'
+        db.add_column(u'pages_home', 'footer',
+                      self.gf('django.db.models.fields.TextField')(null=True, blank=True),
                       keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting field 'Home.carousel'
-        db.delete_column(u'pages_home', 'carousel_id')
+        # Deleting field 'Home.footer'
+        db.delete_column(u'pages_home', 'footer')
 
 
     models = {
@@ -26,11 +26,14 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '128'})
         },
         u'pages.home': {
-            'Meta': {'object_name': 'Home', '_ormbases': [u'pages.Page']},
+            'Meta': {'object_name': 'Home'},
+            'about': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'carousel': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['pages.Carousel']", 'null': 'True', 'blank': 'True'}),
+            'footer': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'headline': ('django.db.models.fields.CharField', [], {'max_length': '512'}),
-            u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['pages.Page']", 'unique': 'True', 'primary_key': 'True'}),
-            'sub_headline': ('django.db.models.fields.CharField', [], {'max_length': '1024'})
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'sub_headline': ('django.db.models.fields.CharField', [], {'max_length': '1024'}),
+            'work': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'})
         },
         u'pages.image': {
             'Meta': {'object_name': 'Image'},
