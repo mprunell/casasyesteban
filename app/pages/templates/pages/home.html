@@ -21,16 +21,16 @@
     </section>	<!-- Slideshow End -->
 
 
-    <aside id="about" class=" left"> <!-- Text Section Start -->
+    <aside id="about" class="text-body left"> <!-- Text Section Start -->
     	<h3>Quiénes Somos</h3><!-- Replace all text with what you want -->
     	<p>
-            {{ home.about }}
+            {{ home.about|safe }}
     	</p>
     </aside>
-    <aside class="right">
+    <aside class="text-body right">
     	<h3>Nuestra Experiencia</h3>
     	<p>
-            {{ home.work }}
+            {{ home.work|safe }}
     	</p>
     </aside>
 

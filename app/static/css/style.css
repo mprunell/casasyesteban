@@ -563,5 +563,6 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 }
 
 
-	
-	
+aside.text-body p {
+    text-align: justify;
+}
