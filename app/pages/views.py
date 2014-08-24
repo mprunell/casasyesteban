@@ -45,6 +45,7 @@ WORKSHOPS = {
     'stress-management': STRESS_MANAGEMENT,
     'motivation': MOTIVATION,
     'how-to-be-an-efficient-leader': HOW_TO_BE_AN_EFFECTIVE_LEADER,
+    'coaching': COACHING,
 }
 
 
@@ -110,11 +111,12 @@ class WorkshopsView (TemplateView):
 
 
 class ContactView (TemplateView):
+    template_name = 'pages/contact.html'
 
     def get_context_data(self, **kwargs):
         context = super(ContactView, self).get_context_data(**kwargs)
         context.update({
-            'active': {'workshops': 'active'}
+            'active': {'contact': 'active'}
         })
 
         return context
