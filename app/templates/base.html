@@ -3,87 +3,130 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{% block page-title %}Casas y Esteban{% endblock %}</title>
         <meta charset="utf-8">
-        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <meta name="description"
-              content="{% block meta_description %}Sitio institucional de Casas & Esteban{% endblock %}">
-        <meta name="author" content="">
-        <link rel="icon" type="image/png" href="" />
+        <title>{% block page-title %}Casas y Esteban{% endblock %}</title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="http://bootstraptaste.com" />
         {% block css %}
-        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700|Cookie' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/fancybox/jquery.fancybox.css' %}" rel="stylesheet">
+        <link href="{% static 'css/flexslider.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+        <!-- Theme skin -->
+        <link href="{% static 'skins/default.css' %}" rel="stylesheet" />
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
         {% endblock %}
-
-        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700|Cookie' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
-
     {% block body %}
     <body>
-        <div class="wrapper">
-	        <div id="top">
-                <div id="logo">
-                    <!-- <img id="logoimage" src="" alt="logo">	Logo image -->
-                    <h1 id="logotitle">Casas y Esteban</h1>	<!-- Logo text -->
-                </div><!--/logo-->
+        <div id="wrapper">
+            <!-- start header -->
+            <header class="transparent fixed">
+                <div class="navbar navbar-default navbar-static-top">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="/"><span>C</span>asas y <span>E</span>steban</a>
+                        </div>
+                        <div class="navbar-collapse collapse ">
+                            <ul class="nav navbar-nav">
+                                <li class="{{ active.home }}"><a href="/">Home</a></li>
+                                <li class="{{ active.about }}"><a href="/about">Quienes Somos</a></li>
+                                <li class="{{ active.work }}"><a href="/work">Areas de Trabajo</a></li>
+                                <li class="{{ active.consultancy }}"><a href="/consultancy">Consultoria</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle "
+                                       data-toggle="dropdown"
+                                       data-hover="dropdown"
+                                       data-delay="0"
+                                       data-close-others="false">Talleres
+                                        <b class=" icon-angle-down"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/workshops/effective-communication">Comunicacion Efectiva</a></li>
+                                        <li><a href="/workshops/anger-management">Autoregulacion del Enojo</a></li>
+                                        <li><a href="/workshops/stress-management">Manejo del Estres</a></li>
+                                        <li><a href="/workshops/motivation">Motivacion</a></li>
+                                        <li><a href="/workshops/how-to-be-an-efficient-leader">
+                                            Como ser un Lider Eficiente</a>
+                                        </li>
+                                        <li><a href="/workshops/coaching">Coaching personal o grupal</a></li>
 
-                <nav>	<!-- Navigation Start -->
-                    <ul>
-                        <li><a href="#top">Inicio</a></li>
-                        <li><a href="#about">Sobre Nosotros</a></li>
-                        <li><a href="#work">Experiencia</a></li>
-                        <li><a href="#footer">Contacto</a></li>
-                    </ul>
-                </nav>	<!-- Navigation End -->
-            </div><!--/top-->
-
-            <hr/><!-- Horizontal Line -->
-
-            {% block content %}
-
-            {% endblock %}
-        </div>
-
-        <footer id="footer">
-            <div class="wrapper">
-                <section class="left">
-                <h4>Contact</h4>
-                    <div id="formwrap">
-                        <form method="post" id="submitform" action="submitemail.php" >
-                                    <input type="text" class="formstyle" title="Name" name="name" />
-                                    <input type="text" class="formstyle" title="Email" name="email" />
-                                    <textarea name="message" title="Message"></textarea>
-                                    <input class="formstyletwo" type="submit" value="Send">
-                        </form>
+                                    </ul>
+                                </li>
+                                <li class="{{ active.contact }}"><a href="contact">Contacto</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div id="error"></div>
-                </section>
-
-        <!-- DON'T TOUCH THIS SECTION END -->
-
-                <section class="right social"> <!-- Social Icons Start -->
-                <a href="http://plus.google.co.uk"><img class="icon" src="{% static 'img/icons/google.png' %}" width="32" height="32" alt="google"></a><!-- Replace with any 32px x 32px icons -->
-                <a href="http://youtube.com"><img class="icon" src="{% static 'img/icons/youtube.png' %}" width="32" height="32" alt="youtube"></a><!-- Replace with any 32px x 32px icons -->
-                <a href="http://facebook.com"><img class="icon" src="{% static 'img/icons/facebook.png' %}" width="32" height="32" alt="facebook"></a><!-- Replace with any 32px x 32px icons -->
-                <a href="http://twitter.com"><img class="icon" src="{% static 'img/icons/twitter.png' %}" width="32" height="32" alt="twitter"></a><!-- Replace with any 32px x 32px icons -->
-                </section> <!-- Social Icons End -->
-                <p>lets get social - </p>
-                </section> <!-- Social Icons End -->
-            </div>
-            <div class="clearfix"></div>
-        </footer>
-        <!--[if lt IE 9]>
-            <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-        <![endif]-->
-        {% block js-foot %}
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script type="text/javascript" src="/static/js/jquery.carouFredSel-5.5.2.js" type="text/javascript"></script>
-        <script type="text/javascript" src="/static/js/jquery.easing.1.3.js"></script>
-        <script type="text/javascript" src="/static/js/jquery.form.js"></script>
-        <script type="text/javascript" src="/static/js/scripts.js"></script>
-        {% endblock js-foot %}
+                </div>
+            </header>
+            <!-- end header -->
+            {% block content %}
+            {% endblock %}
+            <footer>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="widget">
+                                <h5 class="widgetheading">Get in touch with us</h5>
+                                <address>
+                                    <strong>Pocitos, Montevideo</strong>
+                                </address>
+                                <p>
+                                    <i class="icon-phone"></i> 5555555 <br>
+                                    <i class="icon-envelope-alt"></i> contacto@casasyesteban.com
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="widget">
+                                <h5 class="widgetheading">Paginas</h5>
+                                <ul class="link-list">
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sub-footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul class="social-network">
+                                    <li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+        <!-- javascript
+            ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="{% static 'js/jquery.js' %}"></script>
+        <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
+        <script src="{% static 'js/jquery.fancybox-media.js' %}"></script>
+        <script src="{% static 'js/google-code-prettify/prettify.js' %}"></script>
+        <script src="{% static 'js/portfolio/jquery.quicksand.js' %}"></script>
+        <script src="{% static 'js/portfolio/setting.js' %}"></script>
+        <script src="{% static 'js/jquery.flexslider.js' %}"></script>
+        <script src="{% static 'js/animate.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
     </body>
     {% endblock %}
 </html>

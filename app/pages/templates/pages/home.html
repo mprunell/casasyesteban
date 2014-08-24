@@ -3,50 +3,121 @@
 {% load static from staticfiles %}
 
 {% block content %}
-    <header>	<!-- Header Title Start -->
-        <h1>{{ home.headline }}</h1>
-        <h2>&ndash; {{ home.sub_headline }} &ndash;</h2>
-    </header>	<!-- Header Title End -->
-    <section id="slideshow">	<!-- Slideshow Start -->
-        <div class="html_carousel">
-            <div id="slider">
-                {% for slide in home.carousel.image_set.all %}
-                <div class="slide">
-                    <img src="{{ slide.image.url }}" width="800" height="300" alt="image 1"/><!-- Replace these images with your own but make sure they are 3000px wide and 783px high or the same ration -->
-                </div><!--/slide-->
-                {% endfor %}
-            </div><!--/slider-->
-            <div class="clearfix"></div>
-        </div><!--/html_carousel-->
-    </section>	<!-- Slideshow End -->
+<section id="featured">
+    <!-- start slider -->
+    <div class="container-fluid condensed">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Slider -->
+                <div id="main-slider" class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <img src="/media/photos/test2.jpg" alt="" />
+                            <div class="flex-caption">
+                                <h3>Gestión de Emociones Inteligentes</h3>
+                                <p></p>
+                                <a href="#" class="btn btn-theme">Contactenos</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="/media/photos/test3.jpg" alt="" />
+                            <div class="flex-caption">
+                                <h3>Gestión de Emociones Inteligentes</h3>
+                                <p></p>
+                                <a href="#" class="btn btn-theme">Contactenos</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end slider -->
+            </div>
+        </div>
+    </div>
+</section>
+<section class="callaction">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="big-cta">
+                    <div class="cta-text">
+                        <h2>"Somos lo que hacemos día a día. De modo que la excelencia no es un acto sino un hábito."
+                        <span>Aristóteles</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="box">
+                            <div class="box-gray aligncenter">
+                                <h4>Quienes Somos</h4>
+                                <p>
+                                    Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
+                                </p>
+                            </div>
+                            <div class="box-bottom">
+                                <a href="#">Ver mas</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="box">
+                            <div class="box-gray aligncenter">
+                                <h4>Areas de Trabajo</h4>
+                                <p>
+                                    Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
+                                </p>
+                            </div>
+                            <div class="box-bottom">
+                                <a href="#">Ver mas</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="box">
+                            <div class="box-gray aligncenter">
+                                <h4>Consultoria</h4>
+                                <p>
+                                    Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
+                                </p>
+                            </div>
+                            <div class="box-bottom">
+                                <a href="#">Ver mas</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="box">
+                            <div class="box-gray aligncenter">
+                                <h4>Talleres</h4>
+                                <p>
+                                    Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
+                                </p>
+                            </div>
+                            <div class="box-bottom">
+                                <a href="#">Ver mas</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- divider -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="solidline">
+                </div>
+            </div>
+        </div>
+        <!-- end divider -->
 
-
-    <aside id="about" class="text-body left"> <!-- Text Section Start -->
-    	<h3>Quiénes Somos</h3><!-- Replace all text with what you want -->
-    	<p>
-            {{ home.about|safe }}
-    	</p>
-    </aside>
-    <aside class="text-body right">
-    	<h3>Propuestas</h3>
-    	<p>
-            {{ home.work|safe }}
-    	</p>
-    </aside>
-
-
-    <div class="clearfix"></div> <!-- Text Section End -->
-
-    <section id="work"> <!-- Work Links Section Start -->
-
-        <div class="clearfix"></div>
-    </section> <!-- Work Links Section End -->
-
-
-    <section id="bottom" class="text-body"> <!-- Last Words Section Start -->
-        <h3>Áreas de Trabajo</h3>
-        <p>
-            {{ home.footer|safe }}
-    	</p>
-    </section><!-- Last Words Section End-->
+    </div>
+</section>
 {% endblock %}

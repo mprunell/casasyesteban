@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static from staticfiles %}
+
+{% block content %}
+<section id="inner-headline">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<ul class="breadcrumb">
+					<li><a href="/"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+					<li>Taller</li>
+                    <li class="active">{{ workshop.name }}</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="callaction">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="big-cta">
+                    <div class="cta-text">
+                        <h2>"Somos lo que hacemos día a día. De modo que la excelencia no es un acto sino un hábito."
+                        <span>Aristóteles</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+				<h4>{{ workshop.name }}</h4>
+			</div>
+            <div class="col-lg-6">
+                <p class="bordered-left">
+                    {{ workshop.description }}
+                </p>
+            </div>
+        </div>
+        <!-- divider -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="solidline">
+                </div>
+            </div>
+        </div>
+        <!-- end divider -->
+
+    </div>
+</section>
+{% endblock %}
