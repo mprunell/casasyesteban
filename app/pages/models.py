@@ -61,23 +61,6 @@ class Quote(models.Model):
         return self.quote[:50] + ' ...'
 
 
-class Home(SingletonModel):
-
-    headline = models.CharField(max_length=512)
-    sub_headline = models.CharField(max_length=1024)
-    carousel = models.ForeignKey(Carousel, blank=True, null=True)
-    about = models.TextField(blank=True, null=True)
-    work = models.TextField(blank=True, null=True)
-    footer = models.TextField(blank=True, null=True)
-
-    def __unicode__(self):
-        return u'Home'
-
-    class Meta:
-        verbose_name = 'Home'
-        verbose_name_plural = 'Home'
-
-
 class About(SingletonModel, ContentMeta, Content):
 
     quote = models.ForeignKey(Quote)
@@ -164,3 +147,20 @@ class Contact(SingletonModel, ContentMeta, Content):
     class Meta:
         verbose_name = 'Contact'
         verbose_name_plural = 'Contact'
+
+
+class Home(SingletonModel):
+
+    carousel = models.ForeignKey(Carousel, blank=True, null=True)
+    quote = models.ForeignKey(Quote, blank=True, null=True)
+    about = models.ForeignKey(About, blank=True, null=True)
+    work = models.ForeignKey(Work, blank=True, null=True)
+    consultancy = models.ForeignKey(Consultancy, blank=True, null=True)
+    workshops = models.ForeignKey(Workshops, blank=True, null=True)
+
+    def __unicode__(self):
+        return u'Home'
+
+    class Meta:
+        verbose_name = 'Home'
+        verbose_name_plural = 'Home'
