@@ -3,57 +3,23 @@
 {% load static from staticfiles %}
 
 {% block content %}
-<section id="inner-headline">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<ul class="breadcrumb">
-					<li><a href="/"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
-					<li class="active">Quienes Somos</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="callaction">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="big-cta">
-                    <div class="cta-text">
-                        <h2>"Somos lo que hacemos día a día. De modo que la excelencia no es un acto sino un hábito."
-                        <span>Aristóteles</span>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{% include 'pages/breadcrumb.html' %}
+{% include 'pages/quote.html' %}
 <section id="content">
     <div class="container">
+        {% for contact in object.contacts.all %}
         <div class="row">
             <div class="col-lg-2">
-                <h5>Licenciada Olga Casas</h5>
+                <h5>{{ contact.title|default_if_none:'' }} {{ contact.first_name }} {{ contact.last_name }}</h5>
             </div>
             <div class="col-lg-4">
                 <div class="bordered-left">
-                    <p>movil: 0995555555</p>
-                    <p>email: olga@casasyesteban.com</p>
+                    <p>movil: {{ contact.phone }}</p>
+                    <p>email: {{ contact.email }}</p>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-2">
-                <h5>Licenciada Silvana Esteban</h5>
-            </div>
-            <div class="col-lg-4">
-                <div class="bordered-left">
-                    <p>movil: 0995555555</p>
-                    <p>email: silvana@casasyesteban.com</p>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
         <!-- divider -->
         <div class="row">
             <div class="col-lg-12">

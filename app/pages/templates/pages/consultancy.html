@@ -3,41 +3,17 @@
 {% load static from staticfiles %}
 
 {% block content %}
-<section id="inner-headline">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<ul class="breadcrumb">
-					<li><a href="/"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
-					<li class="active">Consultoria</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="callaction">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="big-cta">
-                    <div class="cta-text">
-                        <h2>"Somos lo que hacemos día a día. De modo que la excelencia no es un acto sino un hábito."
-                        <span>Aristóteles</span>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{% include 'pages/breadcrumb.html' %}
+{% include 'pages/quote.html' %}
 <section id="content">
     <div class="container">
         <div class="row">
             <div class="col-lg-2">
-                <h4>Consultoria</h4>
+                <h4>{{ object.headline }}</h4>
             </div>
-            <div class="col-lg-7">
-                <p class="lead">Nuestra función se basa en ofrecer un amplio soporte profesional que implica asesoramiento, orientación y gestión sobre situaciones específicas, ya sean cambios que se presenten en la organización como parte de procesos naturales, como por ejemplo implementación de ascensos, variaciones en las líneas de mando, en la dirección. Así como situaciones imprevistas y traumáticas que pueden alterar el clima laboral tales como, accidentes laborales graves, desvinculaciones de la empresa, etc.
+            <div class="col-lg-6">
+                <p clas="lead">
+                    {{ object.content }}
                 </p>
             </div>
         </div>
