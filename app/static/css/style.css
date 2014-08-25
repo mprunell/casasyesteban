@@ -2016,3 +2016,11 @@ h2 span {
     padding-left: 10px;
     border-left: 5px solid #68A4C4;
 }
+
+.experience h6 {
+    margin: 5px 0 0;
+}
+
+div.small {
+    font-size: 0.9em;
+}
