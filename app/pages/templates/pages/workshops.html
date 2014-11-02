@@ -18,28 +18,28 @@
             </div>
         </div>        <!-- divider -->
         <div class="row">
-            <div class="col-lg-12">
-            {% for workshop_tuple in object.get_workshop_tuples %}
-                <div class="row">
-                    {% for workshop in workshop_tuple %}
-                    {% if workshop %}
-                    <div class="col-lg-4">
-                        <div class="box">
-                            <div class="box-gray aligncenter">
-                                <h4>{{ workshop.name }}</h4>
-                                <p>
-                                    {{ workshop.description|truncatechars:120 }}
-                                </p>
-                            </div>
-                            <div class="box-bottom">
-                                <a href="/workshops/{{ workshop.slug }}">Ver mas</a>
+            <div class="col-lg-10 col-lg-offset-2">
+                {% for workshop_tuple in object.get_workshop_tuples %}
+                    <div class="row">
+                        {% for workshop in workshop_tuple %}
+                        {% if workshop %}
+                        <div class="col-lg-4">
+                            <div class="box">
+                                <div class="box-gray aligncenter">
+                                    <h4>{{ workshop.name }}</h4>
+                                    <p>
+                                        {{ workshop.description|truncatechars:120 }}
+                                    </p>
+                                </div>
+                                <div class="box-bottom">
+                                    <a href="/workshops/{{ workshop.slug }}">Ver más</a>
+                                </div>
                             </div>
                         </div>
+                        {% endif %}
+                        {% endfor %}
                     </div>
-                    {% endif %}
-                    {% endfor %}
-                </div>
-            {% endfor %}
+                {% endfor %}
             </div>
         </div>
         <div class="row">
