@@ -640,7 +640,7 @@ form#commentform textarea {
 	   -moz-transition: all 450ms ease-out 0s;
 		 -o-transition: all 450ms ease-out 0s;
 		    transition: all 450ms ease-out 0s;
-		  
+
 	-webkit-transform: rotateY(180deg) scale(0.5,0.5);
 	   -moz-transform: rotateY(180deg) scale(0.5,0.5);
 		-ms-transform: rotateY(180deg) scale(0.5,0.5);
@@ -1784,7 +1784,7 @@ article img.pull-right, article .align-right{
 21. Media queries 
 ============================= */
 
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 860px) and (max-width: 979px) {
 
 	a.detail{
 		background:none;
@@ -1816,7 +1816,7 @@ article img.pull-right, article .align-right{
 	}	
 }
 
-@media (max-width: 767px) {
+@media (max-width: 860px) {
 
   body {
     padding-right: 0;
@@ -1879,6 +1879,14 @@ article img.pull-right, article .align-right{
 		border-bottom:1px solid #e9e9e9;
 		padding-bottom:20px;
 	}
+
+	#featured div.flexslider {
+        height: 320px;
+	}
+
+    #featured .flexslider .slides img {
+        height: 310px;
+    }
 
 	#featured .flexslider .slide-caption {
 		width: 90%; 
@@ -1949,10 +1957,6 @@ article img.pull-right, article .align-right{
 
 	.search{
 		float:left;
-	}
-
-	.flexslider .flex-caption {
-		display:none;
 	}
 
 

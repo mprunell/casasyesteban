@@ -4,7 +4,6 @@
 
 {% block content %}
 {% include 'pages/breadcrumb.html' %}
-{% include 'pages/quote.html' %}
 <section id="content">
     <div class="container">
         {% for contact in object.contacts.all %}
@@ -14,7 +13,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="bordered-left">
-                    <p>movil: {{ contact.phone }}</p>
+                    <p>móvil: {{ contact.phone }}</p>
                     <p>email: {{ contact.email }}</p>
                 </div>
             </div>
