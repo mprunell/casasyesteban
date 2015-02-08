@@ -1880,13 +1880,22 @@ article img.pull-right, article .align-right{
 		padding-bottom:20px;
 	}
 
+
+
 	#featured div.flexslider {
         height: 320px;
 	}
 
+
+    section#inner-headline div.container {
+        display:none;
+    }
+
+
     #featured .flexslider .slides img {
         height: 310px;
     }
+
 
 	#featured .flexslider .slide-caption {
 		width: 90%; 

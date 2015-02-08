@@ -3,3 +3,4 @@
 cye_pass
 db.sqlite3
 app/media/*
+venv/
