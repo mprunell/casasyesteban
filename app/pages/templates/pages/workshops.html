@@ -27,7 +27,7 @@
                                 <div class="box-gray aligncenter">
                                     <h4>{{ workshop.name }}</h4>
                                     <p>
-                                        {{ workshop.description|truncatechars:120|safe }}
+                                        {{ workshop.description|striptags|truncatechars:120| }}
                                     </p>
                                 </div>
                                 <div class="box-bottom">
